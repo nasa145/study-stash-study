@@ -1,0 +1,115 @@
+{% load static %}
+{% include 'accounts/registration/header.html' %}
+
+<!-- #########################################################################   -->
+
+  <title>Study-Stash SignUp</title>
+</head>
+
+<body>
+
+
+
+  <div class="content">
+    <div class="container">
+      <!-- 
+                  {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show" style="margin-left: 20px; margin-right: 20px;">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% elif message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" style="margin-left: 20px; margin-right: 20px;">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endif %}
+    {% endfor %}
+            -->
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="{% static 'assets_accounts/images/opt-code.png' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="container d-flex justify-content-center align-items-center vh-100">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <h3>Enter OTP Code</h3>
+                    <p>We've sent a one-time verification code to your phone number. To securely save your credit card
+                      details, please enter the verification code sent to your phone below.</p>
+                  </div>
+                  <div class="col-md-12 text-center mt-4">
+                    <form id="otp-form">
+                      <!-- Create separate input fields for each digit -->
+                      <div class="input-group col-md-12 d-flex justify-content-center">
+                        <input type="text" class="form-control otp-input" maxlength="1" required>
+                        <input type="text" class="form-control otp-input" maxlength="1" required>
+                        <input type="text" class="form-control otp-input" maxlength="1" required>
+                        <input type="text" class="form-control otp-input" maxlength="1" required>
+                        <input type="text" class="form-control otp-input" maxlength="1" required>
+                        <input type="text" class="form-control otp-input" maxlength="1" required>
+                      </div>
+                      <!-- Optional: Add a resend button -->
+                      <button type="button" class="btn btn-link mt-2" id="resend-otp">Resend OTP</button>
+                    </form>
+                  </div>
+                  <div class="col-md-12 text-center mt-4">
+                    <button class="btn btn-primary" id="verify-otp">Verify</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  
+  <script>
+    //<!-- You can implement it with django what ever language you choose-->
+    $(document).ready(function () {
+      // Focus the first OTP input field on page load
+      $('.otp-input:first').focus();
+
+      // Allow only numeric input and auto-focus to the next input
+      $('.otp-input').on('input', function () {
+        var $this = $(this);
+        var inputLength = $this.val().length;
+        if (inputLength === 1) {
+          $this.next('.otp-input').focus();
+        }
+      });
+
+      // Resend OTP functionality (you can implement this as needed)
+      $('#resend-otp').on('click', function () {
+        // Implement OTP resend logic here
+        alert('OTP resent!');
+      });
+
+      // OTP verification (you can implement this as needed)
+      $('#verify-otp').on('click', function () {
+        var otpCode = '';
+        $('.otp-input').each(function () {
+          otpCode += $(this).val();
+        });
+
+        // Implement OTP verification logic here with the otpCode
+        alert('OTP Code: ' + otpCode);
+      });
+    });
+  </script>
+
+<!-- ########################################################################################## -->
+{% include 'accounts/registration/footer.html' %}

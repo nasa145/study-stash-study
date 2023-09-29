@@ -1,0 +1,68 @@
+{% load static %}
+
+{% include 'accounts/registration/header.html' %}
+
+  <title>Study-Stash Available Plans</title>
+</head>
+
+<body>
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="{% static 'assets_accounts/images/subscribe.png' %}" alt="Image" class="img-fluid" />
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="mb-4 text-center">
+                <h3>Subscription <strong>Study-Stash</strong></h3>
+              </div>
+            </div>
+          </div>
+          <!-- Innovator Pro Subscription Plan -->
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="card mb-4 shadow-lg">
+                <div class="card-header">
+                  <h3 class="card-title">Innovator Pro</h3>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-subtitle mb-2 text-muted">$45/month</h4>
+                  <p class="card-text">
+                    Unlock innovation and advanced features for your success.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary">Subscribe</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Insight Seeker Subscription Plan -->
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="card mb-4 shadow-lg">
+                <div class="card-header">
+                  <h3 class="card-title">Insight Seeker</h3>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-subtitle mb-2 text-muted">$30/month</h4>
+                  <p class="card-text">
+                    Access valuable insights and knowledge to fuel your
+                    growth.
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <button class="btn btn-primary">Subscribe</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ########################################################################################## -->
+{% include 'accounts/registration/footer.html' %}

@@ -1,0 +1,829 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Study-Stash Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- icon library bootrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+ <!-- Favicons -->
+ <link rel="apple-touch-icon" sizes="180x180" href="{% static 'publicAssets/img/favicons/apple-touch-icon.png' %}">
+ <link rel="icon" type="image/png" sizes="32x32" href="{% static 'publicAssets/img/favicons/favicon-32x32.png' %}">
+ <link rel="icon" type="image/png" sizes="16x16" href="{% static 'publicAssets/img/favicons/favicon-16x16.png' %}">
+ 
+ <!-- Vendor CSS Files -->
+ <link href="{% static 'land_assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+ <link href="{% static 'land_assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+ <link href="{% static 'land_assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+ <link href="{% static 'land_assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+ 
+ <!-- Template Main CSS File -->
+ <link href="{% static 'land_assets/css/style.css' %}" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'active_index' %}">Study-Stash</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link" href="#">Dashboard</a></li>
+          <li><a class="nav-link" href="#">logout</a></li>
+          <li class="dropdown"><a href="#"><span>More </span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#blog">Projects</a></li>
+              <li class="dropdown"><a href="#" style=" color: red"><span>Important</span> <i
+                    class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a class="scrollto" href="{% url 'legal_information' %}#privacy">Privacy policy</a></li>
+                  <li><a class="scrollto" href="{% url 'legal_information' %}#terms">Terms of use</a></li>
+                  <li><a class="scrollto" href="#faq">Faqs</a></li>
+                  <li><a href="#">Scholarships</a></li> <!-- facebook page -->
+                  <li><a href="#">Get Hired</a></li> <!--linkedlin account -->
+                </ul>
+              </li>
+              <li><a href="#"><i class="bi bi-twitter-x"> &nbsp; Twitter</i></a></li>
+              <li><a href="#"><i class="bi bi-facebook">&nbsp; Facebook</i></a></li>
+              <li><a href="#"><i class="bi bi-youtube">&nbsp; Youtube</i></a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <div id="hero" class="hero route bg-image" style="background-image: url('{% static 'publicAssets/img/hero1-bg.jpg' %}')">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <h1 class="hero-title mb-4 text-md">Creating Tomorrow, Today</h1>
+          <p class="hero-subtitle"><span class="typed"
+              data-typed-items="Learner, Researcher, Innovator, Collaborator"></span></p>
+          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="box-shadow-full">
+              <div class="row">
+                <div class="col-md-6">
+                  <!-- This is the logo section that will be starting here -->
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <img src="{% static 'land_assets/img/study-stash-logo.png' %}" alt="Study-Stash Logo" style="height: 300px">
+                    </div>
+                  </div>
+
+                  <!-- THis is the end of the story section -->
+                  <div class="skill-mf">
+                    <p class="title-s">Watch Our Story</p>
+                    <div class="video-container">
+                      <iframe width="500" height="315" src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0"
+                        allowfullscreen></iframe>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="col-md-6">
+                  <div class="about-me pt-4 pt-md-0">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        About Study-Stash
+                      </h5>
+                    </div>
+                    <div class="scrollable-content" style="max-height: 400px; overflow-y: auto;">
+                      <p class="lead">
+                        At Study-Stash, we're dedicated to transforming communities through the power of insights. We're
+                        more than just a platform; we're a movement that welcomes individuals from all walks of life to
+                        drive change. Our core focus is harnessing the potential of insights and ideas, regardless of
+                        your background.
+                      </p>
+                      <p class="lead">
+                        <strong>Our Mission</strong><br>
+                        Our mission is to empower individuals to ignite impactful change by providing a platform for
+                        their unique insights and ideas. Through collaborative efforts, we aim to drive innovation and
+                        address pressing community challenges, contributing to a brighter future.
+                      </p>
+                      <p class="lead">
+                        <strong>Our Vision</strong><br>
+                        We envision a world where insights from a diverse community are catalysts for positive change.
+                        We look forward to a future where industries, communities, and individuals, irrespective of
+                        their background, collaborate seamlessly to address challenges and pave the way for a brighter
+                        tomorrow.
+                      </p>
+                      <p class="lead">
+                        <strong>Our Values</strong><br>
+                      <ul>
+                        <li><strong>Empowerment:</strong> We believe in the potential of every individual to make a
+                          difference. We empower them with the tools and opportunities to drive meaningful change.</li>
+                        <li><strong>Collaboration:</strong> Collaboration fuels innovation. We foster an environment
+                          where people, industries, and communities come together to find solutions that matter.</li>
+                        <li><strong>Innovation:</strong> Our foundation is built on innovative thinking. We encourage
+                          individuals to think outside the box and push boundaries to create a positive impact.</li>
+                        <li><strong>Community:</strong> We're a diverse community united by a common goal – to improve
+                          lives through insights. Our success is rooted in the collective efforts of our members and
+                          partners.</li>
+                      </ul>
+                      </p>
+                      <p class="lead">
+                        <strong>Our Objectives</strong><br>
+                      <ul>
+                        <li><strong>Empower Insights:</strong> We provide a platform for individuals to share their
+                          unique perspectives and insights on pressing community issues, fostering a sense of
+                          empowerment and ownership.</li>
+                        <li><strong>Drive Innovation:</strong> We encourage innovative thinking among individuals by
+                          engaging them in surveys and research that challenge conventional ideas and inspire creative
+                          solutions.</li>
+                        <li><strong>Address Community Challenges:</strong> Collaborating with members, we aim to address
+                          real-world challenges, with a focus on technology and beyond, to find practical and impactful
+                          solutions.</li>
+                        <li><strong>Connect with Industries:</strong> We facilitate connections between individuals and
+                          industries that align with their aspirations, providing opportunities for mentorship,
+                          internships, and job placements.</li>
+                        <li><strong>Recognize and Reward Contributions:</strong> We acknowledge and reward our members
+                          for their contributions to surveys and research, creating incentives for active involvement
+                          and thoughtful participation.</li>
+                      </ul>
+                      </p>
+                      <p class="lead">
+                        Join us at Study-Stash, where we invest in the power of human insights to make a difference in
+                        our ever-evolving world.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <section class="call-action-area call-action-one">
+      <div class="container">
+        <div class="row align-items-center call-action-content">
+          <div class="col-xl-8 col-lg-8">
+            <div class="call-action-text">
+              <h2 class="action-title">
+                Welcome to Your Dashboard!
+              </h2>
+              <p class="text-lg">
+                Access your personalized dashboard where you can manage your profile, explore insightful content, and
+                participate in rewarding activities. Your journey to insightful discoveries begins here!
+              </p>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-4 text-center text-lg-end">
+            <div class="call-action-btn rounded-buttons">
+              <a href="#" class="btn primary-btn rounded-full">
+                <button type="button" class="button button-a button-big button-rouded">Navigate to Dashboard</button>
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </section>
+
+
+
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services-mf pt-5 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Services
+              </h3>
+              <p class="subtitle-a">
+                Empowering Learners, Fostering Collaboration, Driving Innovation
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-journal-check"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Research and Survey Participation</h2>
+                <p class="s-description text-center">
+                  Study-Stash empowers individuals to actively engage in research and surveys, contributing to
+                  meaningful projects, sharing their insights, and gaining valuable perspectives through various
+                  research initiatives.
+                </p>
+                <div class="pt-5"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-lightning"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Empowerment Services</h2>
+                <p class="s-description text-center">
+                  Study-Stash is dedicated to empowering every member of our community. For students, we offer
+                  mentorship, scholarships, and essential school supplies, ensuring they have the support they need to
+                  excel academically. We don't stop there; we extend our empowerment to all community members, enhancing
+                  personal lives and fostering growth.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-award"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Incentives and Recognition</h2>
+                <p class="s-description text-center">
+                  To motivate active participation, Study-Stash offers incentives and recognition for outstanding
+                  contributions. This includes awards, certificates, and opportunities to present research findings,
+                  fostering a sense of accomplishment and purpose among users.
+                </p>
+                <div class="pt-4"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-building"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Industry Insights and Networking</h2>
+                <p class="s-description text-center">
+                  Study-Stash connects you with industry professionals, offering valuable insights and networking
+                  opportunities. Gain mentorship, internships, and career guidance for a brighter future.
+                </p>
+                <div class="pt-2"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-award"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Career Support</h2>
+                <p class="s-description text-center">
+                  Study-Stash offers comprehensive career support to help you achieve your professional goals. Our
+                  platform provides mentorship, industry insights, job opportunities, and resources to empower your
+                  career journey.
+                </p>
+                <div class="pt-2"></div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle"><i class="bi bi-graph-up"></i></span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">Market Research and Data Analysis</h2>
+                <p class="s-description text-center">
+                  Study-Stash provides exceptional market research and data analysis services. Dive into comprehensive
+                  market studies, gather valuable data, and make data-driven decisions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="title-box text-center">
+          <h3 class="title-a text-md">Partners in Progress</h3>
+          <p class="subtitle-a">Partnerships for Success</p>
+          <div class="line-mf"></div>
+        </div>
+
+        <div class="clients-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-1.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-2.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-3.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-4.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-5.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-6.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-7.png' %}" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="{% static 'land_assets/img/clients/client-8.png' %}" class="img-fluid" alt=""></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Clients Section -->
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="work" class="portfolio-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Pricings
+              </h3>
+              <small class='text-muted'>Unlock a world of rewards tailored to your membership plan and provided based on
+                your active engagement with Study-Stash. Cash rewards, our primary offering to every member, are
+                distributed monthly. Your insights matter—conduct research, share your expertise, and win your best
+                rewards. If you're not awarded cash, other exciting rewards await you. Your journey to creating tomorrow
+                starts today.</small>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container-fluid">
+            <div class="container p-5">
+              <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4"> <!-- Adjusted to col-lg-6 -->
+                  <div class="card card1 h-100">
+                    <div class="card-body">
+                      <h5 class="card-title">Insight Seeker</h5>
+                      <small class='text-muted'>Billed per Month</small>
+                      <br><br>
+                      <span class="h2">$30</span>/month
+                      <br><br>
+                      <div class="d-grid my-3">
+                        <button class="btn btn-outline-dark btn-block">Subscribe</button>
+                      </div>
+                      <ul class="list-unstyled mt-3 mb-4" style="text-align: center;">
+                        <hr>
+                        <li><span class="text-success">&#x2713;</span>Cash Rewards</li>
+                        <li><span class="text-danger">&#10008;</span>Scholarships</li>
+                        <li><span class="text-danger">&#10008;</span>Health Insurance</li>
+                        <li><span class="text-success">&#x2713;</span>School Supplies</li>
+                        <li><span class="text-danger">&#10008;</span>Driving License</li>
+                        <li><span class="text-success">&#x2713;</span>Career Support</li>
+                        <li><span class="text-danger">&#10008;</span>Project Priority</li>
+                        <li><span class="text-success">&#x2713;</span>Skill Development</li>
+                        <li><span class="text-danger">&#10008;</span>Passport (Travel)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-12 mb-4"> <!-- Adjusted to col-lg-6 -->
+                  <div class="card card2 h-100">
+                    <div class="card-body">
+                      <h5 class="card-title">Innovator Pro</h5>
+                      <small class='text-muted'>Billed per Month</small>
+                      <br><br>
+                      <span class="h2">$45</span>/month
+                      <br><br>
+                      <div class="d-grid my-3">
+                        <button class="btn btn-outline-dark btn-block">Subscribe</button>
+                      </div>
+                      <ul class="list-unstyled mt-3 mb-4" style="text-align: center;">
+                        <hr>
+                        <li><span class="text-success">&#x2713;</span>Cash Rewards</li>
+                        <li><span class="text-success">&#x2713;</span>Scholarships</li>
+                        <li><span class="text-success">&#x2713;</span>Health Insurance</li>
+                        <li><span class="text-success">&#x2713;</span>School Supplies</li>
+                        <li><span class="text-success">&#x2713;</span>Driving License</li>
+                        <li><span class="text-success">&#x2713;</span>Career Support</li>
+                        <li><span class="text-success">&#x2713;</span>Project Priority</li>
+                        <li><span class="text-success">&#x2713;</span>Skill Development</li>
+                        <li><span class="text-success">&#x2713;</span>Passport (Travel)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+    <!-- ======= Testimonials Section ======= -->
+    <div class="testimonials paralax-mf bg-image" style="background-image: url('{% static 'land_assets/img/overlay-bg.jpg' %}')">
+      <div class="overlay-mf "></div>
+      <div class="container bg-light">
+        <div class="row">
+          <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+          <div class="elfsight-app-8ac9c199-28e9-4cd7-8d95-f5ce6c891dfe"></div>
+        </div>
+      </div>
+    </div><!-- End Testimonials Section -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                ON GOING PROJECTS
+              </h3>
+              <p class="subtitle-a">
+                Empowering the Future, One Project at a Time
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card card-blog">
+              <div class="card-img">
+                <a href="#"><img src="{% static 'land_assets/img/post-12.jpg' %}" alt="" class="img-fluid"></a>
+              </div>
+              <div class="card-body">
+                <div class="card-category-box">
+                  <div class="card-category">
+                    <h6 class="category">Read More</h6>
+                  </div>
+                </div>
+                <h3 class="card-title"><a href="#">Learn About Our Technology Innovation Projects</a></h3>
+                <p class="card-description">
+                  These projects focus on technological advancements and innovations. They include areas like software
+                  development, artificial intelligence, cybersecurity, and data analysis. Students and community members
+                  collaborate to create groundbreaking solutions and address technology-related challenges.
+                </p>
+              </div>
+              <div class="card-footer">
+                <div class="post-author">
+                  <a href="#">
+                    <span class="author">Join Study-Stash</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-blog">
+              <div class="card-img">
+                <a href="#"><img src="{% static 'land_assets/img/post-2.jpg' %}"  alt="" class="img-fluid"></a>
+              </div>
+              <div class="card-body">
+                <div class="card-category-box">
+                  <div class="card-category">
+                    <h6 class="category">Read More</h6>
+                  </div>
+                </div>
+                <h3 class="card-title"><a href="#">Explore Our Community Impact Initiatives</a></h3>
+                <p class="card-description">
+                  These projects aim to make a positive impact on local communities and society at large. They encompass
+                  a wide range of non-technology areas such as environmental conservation, healthcare, education, and
+                  social welfare. Participants work together to develop solutions that address pressing community needs.
+                </p>
+              </div>
+              <div class="card-footer">
+                <div class="post-author">
+                  <a href="#">
+                    <span class="author">Join Study-Stash</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card card-blog">
+              <div class="card-img">
+                <a href="#"><img src="{% static 'land_assets/img/post-3.jpg' %}"alt="" class="img-fluid"></a>
+              </div>
+              <div class="card-body">
+                <div class="card-category-box">
+                  <div class="card-category">
+                    <h6 class="category">REad More</h6>
+                  </div>
+                </div>
+                <h3 class="card-title"><a href="#">Discover Our Market Research and Data Analysis Studies</a></h3>
+                <p class="card-description">
+                  This category involves conducting comprehensive market research and data analysis projects.
+                  Participants gather valuable insights into market trends, consumer behavior, and industry dynamics.
+                  These studies provide data-driven recommendations for businesses and organizations.
+                </p>
+              </div>
+              <div class="card-footer">
+                <div class="post-author">
+                  <a href="#">
+                    <span class="author">Join Study-Stash</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Blog Section -->
+
+
+    <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="title-box text-center">
+          <h3 class="title-a">Frequently Asked Questions</h3>
+          <p class="subtitle-a">Your Questions, Our Answers: Navigating Study-Stash with Confidence</p>
+          <div class="line-mf"></div>
+        </div>
+
+
+        <ul class="faq-list" data-aos="fade-up" data-aos-delay="100">
+
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">How do I access the Study-Stash
+              program? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>To access the Study-Stash program, simply register, make the required payment, and you'll be ready to
+                start participating in Study-Stash programs. Join our vibrant community of researchers and survey
+                participants today!</p>
+            </div>
+          </li>
+
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">What are the pricing options for
+              membership plans? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i>
+            </div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>We offer two types of membership plans: Insight Seeker and Innovator Pro. The Insight Seeker is
+                currently priced at $30 and provides access to cash rewards and eligibility to apply for scholarships
+                and other rewards that apply. The Innovator Pro plan, priced at $45, offers access to all types of
+                rewards provided by Study-Stash. Please note that pricing options are subject to change.</p>
+            </div>
+          </li>
+
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">What kind of rewards can I expect as
+              a member? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+              <p>As a valued member of Study-Stash, your dedication and active participation can lead to a wide range of
+                rewards that touch every aspect of your life. Our primary reward for every active member is cash
+                rewards, which can support your financial goals. We believe that your insights are valuable, and we
+                provide cash rewards accordingly.</p>
+              <p>In addition to cash rewards, we are actively working towards launching a bi-weekly reward program to
+                provide even more opportunities for you to benefit. Stay tuned for updates on our expanding reward
+                offerings!</p>
+              <p>Furthermore, by the end of the month, you could potentially double, quadruple, or even exceed your
+                initial investment.</p>
+            </div>
+          </li>
+
+
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Does the scholarship funds go
+              directly to the student or the school? <i class="bi bi-chevron-down icon-show"></i><i
+                class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+              <p>The scholarship funds awarded through Study-Stash are sent directly to the concerned school. The funds
+                are intended to support the student's education and are managed by the school to ensure they are used
+                for their intended purpose.</p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq7" class="collapsed question">How can I participate in answering
+              research and survey questions? <i class="bi bi-chevron-down icon-show"></i><i
+                class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq7" class="collapse" data-bs-parent=".faq-list">
+              <p>Study-Stash actively partners with a variety of companies to address ongoing community challenges,
+                which can include both technology-related and non-technology-related projects. These projects aim to
+                drive innovation and positive change.</p>
+              <p>To participate in answering research and survey questions, simply navigate to your workspace dashboard.
+                Here, you can access a list of all ongoing projects from our partner companies. Each project comes with
+                specific tasks that you can download and work on within the given timeframe to meet the deadlines. Be
+                sure to follow the provided instructions for each task carefully. Your valuable insights and ideas are
+                instrumental in helping us find innovative solutions and make a positive impact on these projects.</p>
+            </div>
+          </li>
+
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq13" class="collapsed question">How do I qualify for Study-Stash
+              rewards? Can I expect weekly rewards on Study-Stash? How are Study-Stash rewards calculated? Are
+              Study-Stash rewards taxable? <i class="bi bi-chevron-down icon-show"></i><i
+                class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq13" class="collapse" data-bs-parent=".faq-list">
+              <p>To qualify for Study-Stash rewards, you need to actively participate on our platform by contributing to
+                research and survey initiatives. Your contributions may include providing valuable insights, completing
+                surveys, or engaging in other activities that benefit our community. The specific criteria for earning
+                rewards will be clearly outlined on the platform, so be sure to check for details there.</p>
+              <p>Currently, Study-Stash offers monthly rewards to our users. We plan to introduce weekly rewards in the
+                future as our platform grows. Rest assured, we're committed to providing opportunities for you to
+                benefit from your contributions on a regular basis.</p>
+              <p>Study-Stash rewards are calculated based on various factors, including the quality and quantity of your
+                contributions to our research and survey initiatives. The more actively you engage and provide valuable
+                insights, the higher your potential rewards. We aim to ensure that your efforts are recognized and
+                rewarded fairly.</p>
+              <p>Yes, Study-Stash rewards may be subject to taxation depending on your local tax laws and regulations.
+                It's important to consult with a tax professional or advisor in your region to understand your tax
+                obligations related to rewards earned on our platform. We recommend keeping track of your rewards for
+                tax reporting purposes.</p>
+            </div>
+          </li>
+
+          <li>
+            <div data-bs-toggle="collapse" href="#faq11" class="collapsed question">Why Study-Stash? <i
+                class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq11" class="collapse" data-bs-parent=".faq-list">
+              <p>Study-Stash offers a unique opportunity for students to make a real impact.</p>
+              <p>By participating in our surveys and research, you contribute valuable insights to address pressing
+                community challenges.</p>
+              <p>Our platform empowers you to connect with industries aligned with your goals, providing mentorship, job
+                opportunities, and more.</p>
+              <p>Join Study-Stash to be part of a community-driven movement that empowers, rewards, and inspires.</p>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </section><!-- End F.A.Q Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route"
+      style="background-image: url('{% static 'land_assets/img/overlay-bg.jpg' %}')";>
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="contact-mf">
+              <div id="contact" class="box-shadow-full">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        Get in Touch
+                      </h5>
+                    </div>
+                    <div>
+                      <form action="#" method="post" role="form" class="php-email-form">
+                        <div class="row">
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                                required>
+                            </div>
+                          </div>
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                                required>
+                            </div>
+                          </div>
+                          <div class="col-md-12 mb-3">
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                                required>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <textarea class="form-control" name="message" rows="5" placeholder="Message"
+                                required></textarea>
+                            </div>
+                          </div>
+                          <div class="col-md-12 text-center my-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                          </div>
+                          <div class="col-md-12 text-center">
+                            <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="title-box-2 pt-4 pt-md-0">
+                      <h5 class="title-left">
+                        Connect with Study-Stash Today!
+                      </h5>
+                    </div>
+                    <div class="more-info">
+                      <p class="lead">
+                        Have questions? Need assistance? Interested in collaborative research? Study-Stash is your
+                        partner for research. Contact us to explore together!
+                      </p>
+                      <ul class="list-ico">
+                        <li><span class="bi bi-geo-alt"></span> 329 DAR ES SALAAM ST AZIKIWE, MA 02108</li>
+                        <li><span class="bi bi-phone"></span> (617) 557-0089</li>
+                        <li><span class="bi bi-envelope"></span> contact@study-stash.com</li>
+                      </ul>
+                    </div>
+                    <div class="socials">
+                      <ul>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-facebook"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-youtube"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+  <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+  <div class="elfsight-app-521a461e-affb-480a-a369-63cb0bae120b"></div>
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="copyright-box">
+            <p class="copyright">&copy; Copyright © 2023 <strong>Study-Stash</strong>, All Rights Reserved.</p>
+            <div class="credits">
+             
+              Owned and operated by <a href="#">FCWT COMPANY, LLC.</a>
+
+              <p class="small">Use of this Site is subject to express terms of use. By using this site, you signify that
+                you agree to be bound by these <a href="{%  url 'legal_information' %}#terms"
+                  class="green-link scrollto">Study-Stash Terms of Service.</a></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="{% static 'land_assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+<script src="{% static 'land_assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'land_assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'land_assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'land_assets/vendor/typed.js/typed.umd.js' %}"></script>
+<script src="{% static 'land_assets/vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Main JS File -->
+<script src="{% static 'land_assets/js/main.js' %}"></script>
+
+
+</body>
+
+</html>

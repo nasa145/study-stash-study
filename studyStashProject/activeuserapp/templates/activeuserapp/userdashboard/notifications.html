@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Study-Stash Chat Hub Center</title>
+
+	{% include 'activeuserapp/userdashboard/header.html' %}
+
+
+	<div class="app-wrapper">
+
+		<div class="app-content pt-3 p-md-3 p-lg-4">
+			<div class="container-xl">
+				<div class="col-12 col-lg-12">
+					<div class="app-card app-card-stats-table h-100 shadow-sm text-dark">
+						<div class="app-card-header p-3">
+							<div class="row justify-content-between align-items-center">
+								<div class="col-auto">
+									<h4 class="app-card-title">Stay Connected with Study-Stash Community!</h4>
+								</div><!--//col-->
+							</div><!--//row-->
+						</div><!--//app-card-header-->
+						<div class="app-card-body p-3 p-lg-4 overflow-auto">
+							<p class="mb-4">Dear Study-Stash Community Members,</p>
+
+							<p>We're excited to announce that we're working on a new feature that will allow you to
+								connect with fellow members from around the world! Stay tuned for this exciting
+								development.</p>
+							<div class="text-center">
+								<img src="{% static 'active_assets/images/background/Chat bot-bro.png' %}" width="auto" height="400px"
+									alt="chat-image">
+							</div>
+						</div><!--//app-card-body-->
+					</div><!--//app-card-->
+				</div><!--//col-->
+
+
+			</div><!--//container-fluid-->
+		</div><!--//app-content-->
+	</div>
+	</div>
+	
+	{% include 'activeuserapp/userdashboard/footer.html' %}

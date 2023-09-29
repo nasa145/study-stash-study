@@ -1,0 +1,89 @@
+{% load static %}
+
+{% include 'accounts/registration/header.html' %}
+
+<!-- #########################################################################   -->
+<title>Study-Stash Login</title>
+</head>
+
+<body>
+
+
+
+  <div class="content">
+    <div class="container">
+      <!-- 
+                  {% for message in messages %}
+      {% if message.tags == 'success' %}
+        <div class="alert alert-success alert-dismissible fade show" style="margin-left: 20px; margin-right: 20px;">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% elif message.tags == 'error' %}
+        <div class="alert alert-danger alert-dismissible fade show" style="margin-left: 20px; margin-right: 20px;">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endif %}
+    {% endfor %}
+            -->
+      <div class="row">
+        <div class="col-md-6 order-md-2">
+          <img src="{% static 'assets_accounts/images/Privacy policy-rafiki.png' %}" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-8">
+              <div class="mb-4">
+                <h3>Sign In to <strong>Study-Satash</strong></h3>
+                <p class="mb-4">Unlock the door to knowledge and opportunity. Welcome back to Study-Stash!.</p>
+              </div>
+              <form action="#" method="post">
+                <div class="form-group first">
+                  <label for="username">Username</label>
+                  <input type="text" class="form-control" id="username">
+
+                </div>
+                <div class="form-group last mb-4">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password">
+
+                </div>
+
+                <div class="d-flex mb-5 align-items-center">
+                  <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                    <input type="checkbox" checked="checked" />
+                    <div class="control__indicator"></div>
+                  </label>
+                  <span class="ml-auto"><a href="{% url 'password_reset_form' %}" class="forgot-pass">Forgot
+                      Password?</a></span>
+                </div>
+                <div class="form-group last mb-4">
+                  <span class="ml-auto">Do have an account? &nbsp;<a href="{% url 'register' %}"
+                    class="forgot">SignUp
+                      Here</a></span>
+                </div>
+
+                <div class="form-group last mb-4">
+                  <div class="g-recaptcha" data-sitekey="Site_key"></div>
+                </div>
+
+                <input type="submit" value="Log In" class="btn text-white btn-block btn-primary">
+
+            </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+<!-- ########################################################################################## -->
+{% include 'accounts/registration/footer.html' %}
