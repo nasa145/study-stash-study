@@ -24,4 +24,7 @@ def user_dashboard(request):
 def active_index(request):
     return render(request, 'activeuserapp/landingtemplates/active_index.html')
 
+def legal_information(request):
+    return render(request, 'activeuserapp/landingtemplates/legalinformation.html')
+
 

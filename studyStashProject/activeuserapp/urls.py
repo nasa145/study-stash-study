@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name='activeuserapp'
+
 urlpatterns = [
     path('account/', views.account, name='account'),
     path('docs/', views.docs, name='docs'),
@@ -10,4 +12,6 @@ urlpatterns = [
     path('today_task/', views.today_task, name='today_task'),
     path('user_dashboard/', views.user_dashboard, name='user_dashboard'),
     path('active_index/', views.active_index, name='active_index'),
+    path('legal/', views.legal_information, name='legal_information'),
+
 ]

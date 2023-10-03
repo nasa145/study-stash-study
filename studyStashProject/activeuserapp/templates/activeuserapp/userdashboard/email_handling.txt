@@ -1,0 +1,156 @@
+<!-- Add this script to your HTML page -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // Select the email subscription toggle switch
+        var emailSubscriptionToggle = $("#emailSubscriptionToggle");
+
+        // Add an event listener for the change event on the toggle switch
+        emailSubscriptionToggle.change(function () {
+            // Check if the toggle switch is checked (on)
+            if ($(this).is(":checked")) {
+                // If checked, make an AJAX request to add the user's email to the database
+                $.ajax({
+                    type: "POST",  // Use POST or your preferred method
+                    url: "/add_email",  // Replace with the actual URL for adding emails
+                    data: { email: "user@example.com" },  // Replace with the user's email
+                    success: function (response) {
+                        // Handle the success response if needed
+                        console.log("Email subscription added successfully");
+                    },
+                    error: function (error) {
+                        // Handle the error if needed
+                        console.error("Error adding email subscription");
+                    }
+                });
+            } else {
+                // If not checked, make an AJAX request to remove the user's email from the database
+                $.ajax({
+                    type: "POST",  // Use POST or your preferred method
+                    url: "/remove_email",  // Replace with the actual URL for removing emails
+                    data: { email: "user@example.com" },  // Replace with the user's email
+                    success: function (response) {
+                        // Handle the success response if needed
+                        console.log("Email subscription removed successfully");
+                    },
+                    error: function (error) {
+                        // Handle the error if needed
+                        console.error("Error removing email subscription");
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
+
+
+# subscriptions/models.py
+from django.db import models
+
+class EmailSubscription(models.Model):
+    email = models.EmailField(unique=True)
+
+
+
+# subscriptions/views.py
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import EmailSubscription
+
+@csrf_exempt
+def add_email_subscription(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            # Check if the email already exists
+            if not EmailSubscription.objects.filter(email=email).exists():
+                EmailSubscription.objects.create(email=email)
+                return JsonResponse({'message': 'Email subscription added successfully'})
+            else:
+                return JsonResponse({'message': 'Email already subscribed'})
+        else:
+            return JsonResponse({'message': 'Email not provided'})
+    else:
+        return JsonResponse({'message': 'Invalid request method'})
+
+
+
+
+# subscriptions/views.py
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import EmailSubscription
+
+@csrf_exempt
+def remove_email_subscription(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            try:
+                subscription = EmailSubscription.objects.get(email=email)
+                subscription.delete()
+                return JsonResponse({'message': 'Email subscription removed successfully'})
+            except EmailSubscription.DoesNotExist:
+                return JsonResponse({'message': 'Email not found'})
+        else:
+            return JsonResponse({'message': 'Email not provided'})
+    else:
+        return JsonResponse({'message': 'Invalid request method'})
+
+
+
+
+
+# subscriptions/urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('add_email/', views.add_email_subscription, name='add_email_subscription'),
+    path('remove_email/', views.remove_email_subscription, name='remove_email_subscription'),
+]
+
+
+# project/urls.py
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('subscriptions/', include('subscriptions.urls')),
+    # Other URL patterns for your project...
+]
+
+
+// Make an AJAX request to add the user's email to the database
+$.ajax({
+    type: "POST",
+    url: "/subscriptions/add_email/",
+    data: { email: "user@example.com" },  // Replace with the user's email
+    success: function (response) {
+        // Handle the success response if needed
+        console.log(response.message);
+    },
+    error: function (error) {
+        // Handle the error if needed
+        console.error("Error adding email subscription");
+    }
+});
+
+// Make an AJAX request to remove the user's email from the database
+$.ajax({
+    type: "POST",
+    url: "/subscriptions/remove_email/",
+    data: { email: "user@example.com" },  // Replace with the user's email
+    success: function (response) {
+        // Handle the success response if needed
+        console.log(response.message);
+    },
+    error: function (error) {
+        // Handle the error if needed
+        console.error("Error removing email subscription");
+    }
+});

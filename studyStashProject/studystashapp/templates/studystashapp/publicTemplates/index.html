@@ -10,7 +10,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="{% url 'index' %}">Study-Stash</a></h1>
+      <h1 class="logo"><a href="{% url 'studystashapp:index' %}">Study-Stash</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -23,12 +23,12 @@
           <li><a class="nav-link scrollto " href="#blog">projects</a></li>
           <li class="dropdown"><a href="#"><span>More </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{% url 'login' %}">Login Here</a></li>
+              <li><a href="{% url 'accounts:login' %}">Login Here</a></li>
               <li class="dropdown"><a href="#" style=" color: red"><span>Important</span> <i
                     class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="{% url 'legal_information' %}#privacy" target="_blank">Privacy policy</a></li>
-                  <li><a href="{% url 'legal_information' %}#terms" target="_blank">Terms of use</a></li>
+                  <li><a href="{% url 'studystashapp:legal_information' %}#privacy" target="_blank">Privacy policy</a></li>
+                  <li><a href="{% url 'studystashapp:legal_information' %}#terms" target="_blank">Terms of use</a></li>
                   <li><a href="#faq" class="scrollto">Faqs</a></li>
                   <li><a href="#">Scholarships</a></li> <!-- facebook page -->
                   <li><a href="#">Employmnets</a></li> <!--linkedlin account -->
@@ -183,7 +183,7 @@
           </div>
           <div class="col-xl-4 col-lg-4 text-center text-lg-end">
             <div class="call-action-btn rounded-buttons">
-              <a href="{% url 'login' %}" class="btn primary-btn rounded-full">
+              <a href="{% url 'accounts:login' %}" class="btn primary-btn rounded-full">
                 <button type="button" class="button button-a button-big button-rouded">Login Here</button>
               </a>
             </div>

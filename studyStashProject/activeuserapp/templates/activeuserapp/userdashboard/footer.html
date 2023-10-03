@@ -1,12 +1,23 @@
 {% load static %}
 <footer class="app-footer">
     <div class="container text-center py-3">
-        <small class="copyright">Study-Stash &copy; All rights reserved. Owned and operated by FCWT LLC</small>
+        <small class="copyright">Study-Stash &copy; {currentYear} All rights reserved. Owned and operated by FCWT LLC </small>
     </div>
 </footer><!--//app-footer-->
-
+   
 
 </div><!--//app-wrapper-->
+
+<script>
+    // Get the current year using JavaScript
+    var currentYear = new Date().getFullYear();
+
+    // Select the element containing the {currentYear} placeholder
+    var copyrightElement = document.querySelector('.copyright');
+
+    // Replace the {currentYear} placeholder with the actual year
+    copyrightElement.textContent = copyrightElement.textContent.replace('{currentYear}', currentYear);
+</script>
 
 
 <!-- Javascript -->

@@ -1,52 +1,10 @@
 {% load static %}
-{% include 'studystashapp/publicTemplates/header.html' %}
 
 
 <title>Study-Stash Terms of Services</title>
-</head>
 
-<body>
+{% include 'activeuserapp/landingtemplates/header.html' %}
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="{% url 'studystashapp:index' %}">Study-Stash</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'studystashapp:index' %}#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'studystashapp:index' %}#about">About</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'studystashapp:index' %}#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="{% url 'studystashapp:index' %}#work">pricings</a></li>
-          <li><a class="nav-link scrollto " href="{% url 'studystashapp:index' %}#blog">projects</a></li>
-          <li class="dropdown"><a href="#"><span>More </span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Login Here</a></li>
-              <li class="dropdown"><a href="#" style=" color: red"><span>Important</span> <i
-                    class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="{% url 'studystashapp:legal_information' %}#privacy">Privacy policy</a></li>
-                  <li><a href="{% url 'studystashapp:legal_information' %}#terms">Terms of use</a></li>
-                  <li><a href="{% url 'studystashapp:index' %}#faq" class="scrollto">Faqs</a></li>
-                  <li><a href="#">Scholarships</a></li> <!-- facebook page -->
-                  <li><a href="#">Employmnets</a></li> <!--linkedlin account -->
-                </ul>
-              </li>
-              <li><a href="#"><i class="bi bi-twitter-x"> &nbsp; Twitter</i></a></li>
-              <li><a href="#"><i class="bi bi-facebook">&nbsp; Facebook</i></a></li>
-              <li><a href="#"><i class="bi bi-youtube">&nbsp; Youtube</i></a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="{% url 'studystashapp:index' %}#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
 
   <div class="hero hero-single route bg-image" style="background-image: url(assets/img/overlay-bg.jpg)">
     <div class="overlay-mf"></div>
@@ -1034,4 +992,4 @@
 
 
 
-{% include 'studystashapp/publicTemplates/footer.html' %}
+{% include 'activeuserapp/landingtemplates/footer.html' %}

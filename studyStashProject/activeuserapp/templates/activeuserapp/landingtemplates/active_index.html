@@ -8,71 +8,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Study-Stash Home</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  {% include 'activeuserapp/landingtemplates/header.html' %}
 
-  <!-- icon library bootrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
- <!-- Favicons -->
- <link rel="apple-touch-icon" sizes="180x180" href="{% static 'publicAssets/img/favicons/apple-touch-icon.png' %}">
- <link rel="icon" type="image/png" sizes="32x32" href="{% static 'publicAssets/img/favicons/favicon-32x32.png' %}">
- <link rel="icon" type="image/png" sizes="16x16" href="{% static 'publicAssets/img/favicons/favicon-16x16.png' %}">
- 
- <!-- Vendor CSS Files -->
- <link href="{% static 'land_assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
- <link href="{% static 'land_assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
- <link href="{% static 'land_assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
- <link href="{% static 'land_assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
- 
- <!-- Template Main CSS File -->
- <link href="{% static 'land_assets/css/style.css' %}" rel="stylesheet">
-
-
-</head>
-
-<body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="{% url 'active_index' %}">Study-Stash</a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link" href="#">Dashboard</a></li>
-          <li><a class="nav-link" href="#">logout</a></li>
-          <li class="dropdown"><a href="#"><span>More </span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#blog">Projects</a></li>
-              <li class="dropdown"><a href="#" style=" color: red"><span>Important</span> <i
-                    class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a class="scrollto" href="{% url 'legal_information' %}#privacy">Privacy policy</a></li>
-                  <li><a class="scrollto" href="{% url 'legal_information' %}#terms">Terms of use</a></li>
-                  <li><a class="scrollto" href="#faq">Faqs</a></li>
-                  <li><a href="#">Scholarships</a></li> <!-- facebook page -->
-                  <li><a href="#">Get Hired</a></li> <!--linkedlin account -->
-                </ul>
-              </li>
-              <li><a href="#"><i class="bi bi-twitter-x"> &nbsp; Twitter</i></a></li>
-              <li><a href="#"><i class="bi bi-facebook">&nbsp; Facebook</i></a></li>
-              <li><a href="#"><i class="bi bi-youtube">&nbsp; Youtube</i></a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <div id="hero" class="hero route bg-image" style="background-image: url('{% static 'publicAssets/img/hero1-bg.jpg' %}')">
@@ -806,47 +743,4 @@
     </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
-  <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-  <div class="elfsight-app-521a461e-affb-480a-a369-63cb0bae120b"></div>
-
-  <!-- ======= Footer ======= -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="copyright-box">
-            <p class="copyright">&copy; Copyright © 2023 <strong>Study-Stash</strong>, All Rights Reserved.</p>
-            <div class="credits">
-             
-              Owned and operated by <a href="#">FCWT COMPANY, LLC.</a>
-
-              <p class="small">Use of this Site is subject to express terms of use. By using this site, you signify that
-                you agree to be bound by these <a href="{%  url 'legal_information' %}#terms"
-                  class="green-link scrollto">Study-Stash Terms of Service.</a></p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="{% static 'land_assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
-<script src="{% static 'land_assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'land_assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
-<script src="{% static 'land_assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
-<script src="{% static 'land_assets/vendor/typed.js/typed.umd.js' %}"></script>
-<script src="{% static 'land_assets/vendor/php-email-form/validate.js' %}"></script>
-
-<!-- Template Main JS File -->
-<script src="{% static 'land_assets/js/main.js' %}"></script>
-
-
-</body>
-
-</html>
+  {% include 'activeuserapp/landingtemplates/footer.html' %}
