@@ -125,4 +125,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# SMTP Server Settings (Replace with your email provider's details)
+EMAIL_HOST = 'smtp.gmail.com'   # SMTP server hostname
+EMAIL_PORT = 587  # Port for SMTP (587 is common for TLS)
+EMAIL_USE_TLS = True  # Use TLS (True for secure email)
+EMAIL_HOST_USER = 'appsnasa57@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'fcvx zczs dmsm doyz'  # Your email password
