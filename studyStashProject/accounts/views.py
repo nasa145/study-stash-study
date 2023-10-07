@@ -23,8 +23,14 @@ def login_view(request):
         username_or_email = request.POST.get('username')
         password = request.POST['password']
 
-        # Authenticate the user using email or username
-        user = authenticate(request, username=username_or_email, password=password)
+        # Try to authenticate the user with both username and email
+        user = None
+        if '@' in username_or_email:
+            # If the input contains '@', assume it's an email
+            user = authenticate(request, email=username_or_email, password=password)
+        else:
+            # Otherwise, assume it's a username
+            user = authenticate(request, username=username_or_email, password=password)
 
         if user is not None:
             if user.is_active:
@@ -32,7 +38,7 @@ def login_view(request):
                 subscription = Subscription.objects.filter(user=user, is_active=True).first()
 
                 if subscription:
-                    # User has an active subscription, redirect to the dashboard
+                    # User has an active subscription, log them in and redirect to the dashboard
                     login(request, user)
                     return redirect('activeuserapp:user_dashboard')
                 else:
@@ -47,6 +53,9 @@ def login_view(request):
             return redirect('accounts:login')  # Redirect to the login page with an error message
 
     return render(request, 'accounts/registration/login.html')
+
+
+
 
 # A REGISTRATION VIEW FOR USER REGISTRATION LOGIC
 def register_view(request):
