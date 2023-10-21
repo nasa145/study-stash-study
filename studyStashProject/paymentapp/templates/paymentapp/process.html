@@ -1,0 +1,28 @@
+
+
+
+<form method="post">
+  {% csrf_token %}
+
+  <div class="field">
+    <label for="cardholder_name">Cardholder Name</label>
+    <input type="text" name="cardholder_name" id="cardholder_name" required>
+  </div>
+
+  <div class="field">
+    <label for="credit_card_number">Credit Card Number</label>
+    <input type="text" name="credit_card_number" id="credit_card_number" required>
+  </div>
+
+  <div class="field">
+    <label for="expiration_date">Expiration Date (MM/YY)</label>
+    <input type="text" name="expiration_date" id="expiration_date" pattern="^(0[1-9]|1[0-2])/\d{2}$" placeholder="MM/YY" required>
+  </div>
+
+  <div class="field">
+    <label for="cvv">CVV</label>
+    <input type="number" name="cvv" id="cvv" required>
+  </div>
+
+  <button type="submit">Submit Payment</button>
+</form>

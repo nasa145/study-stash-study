@@ -1,56 +1,45 @@
 
+
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from paymentapp.models import Subscription
-from .models import UserProfile, User
+from .models import UserProfile, ApplicationUser
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_str, force_bytes
 from django.http import HttpResponse
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.core.mail import EmailMessage
-from datetime import datetime
+from datetime import datetime 
+from django.contrib import messages 
+from django.views.decorators.http import require_POST
 
 # A VIEW TO LOGIN THE USER WITH CUSTOM LOGIC
 def login_view(request):
     if request.method == 'POST':
-        username_or_email = request.POST.get('username')
+        username = request.POST.get('username')
         password = request.POST['password']
 
-        # Try to authenticate the user with both username and email
-        user = None
-        if '@' in username_or_email:
-            # If the input contains '@', assume it's an email
-            user = authenticate(request, email=username_or_email, password=password)
-        else:
-            # Otherwise, assume it's a username
-            user = authenticate(request, username=username_or_email, password=password)
+        # Authenticate the user using the custom backend
+        user = authenticate(request, username=username, password=password)
 
         if user is not None:
             if user.is_active:
-                # Check if the user has an active subscription
-                subscription = Subscription.objects.filter(user=user, is_active=True).first()
+                login(request, user)
+                messages.success(request, "You are now logged in " )
+                return redirect('activeuserapp:user_dashboard')
 
-                if subscription:
-                    # User has an active subscription, log them in and redirect to the dashboard
-                    login(request, user)
-                    return redirect('activeuserapp:user_dashboard')
-                else:
-                    # User does not have an active subscription, redirect to available plans
-                    messages.error(request, 'You need to purchase a plan to access the dashboard.')
-                    return redirect('paymentapp:available_plans')
             else:
                 messages.error(request, 'Your account is not yet activated. Please check your email for confirmation instructions.')
-                return redirect('accounts:login')  # Redirect to the login page with an error message
+                return redirect('accounts:login')
         else:
             messages.error(request, 'Incorrect credentials. Please check your username/email and password.')
-            return redirect('accounts:login')  # Redirect to the login page with an error message
+            return redirect('accounts:login') 
 
     return render(request, 'accounts/registration/login.html')
 
@@ -60,7 +49,6 @@ def login_view(request):
 # A REGISTRATION VIEW FOR USER REGISTRATION LOGIC
 def register_view(request):
     if request.method == 'POST':
-        # Get user input from the custom HTML form
         username = request.POST['username']
         email = request.POST['email']
         password1 = request.POST['password1']
@@ -72,26 +60,26 @@ def register_view(request):
             return redirect('accounts:register')
 
         # Check if email is already in use
-        # User = get_user_model()
-        if User.objects.filter(email=email).exists():
+        if ApplicationUser.objects.filter(email=email).exists():
             messages.error(request, 'Email is already in use. Please use a different email address.')
             return redirect('accounts:register')
 
         # Check if username is already in use
-        if User.objects.filter(username=username).exists():
+        if ApplicationUser.objects.filter(username=username).exists():
             messages.error(request, 'Username is already in use. Please choose a different username.')
             return redirect('accounts:register')
 
         # Create a new user object but set it as inactive
-        user = User.objects.create_user(username, email, password1)
+        user = ApplicationUser.objects.create_user(username, email, password1)
         user.is_active = False
         user.save()
+
+        # After successfully registration also create the profule for the user
+        user_profile = UserProfile.objects.create(user=user)
 
         # Generate email confirmation token
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        print(uid)
-        print(uid)
 
         # Send email confirmation using EmailMessage
         current_site = get_current_site(request)
@@ -105,7 +93,7 @@ def register_view(request):
             'year': current_year,
         })
         email_message = EmailMessage(mail_subject, message, 'appsnasa57@gmail.com', [user.email])
-        email_message.content_subtype = 'html'  # Set the content type to HTML
+        email_message.content_subtype = 'html'  
         email_message.send()
 
         messages.success(request, 'Registration successful! Check your email for confirmation instructions.')
@@ -123,20 +111,20 @@ def success_register_view(request):
 
 #  A VIEW TO ACTIVATE THE USER
 def activate_account(request, uidb64, token):
-    # User = get_user_model()
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
-        print(uid)
-        user = User.objects.get(pk=uid)
+        user = ApplicationUser.objects.get(pk=uid)
 
         if default_token_generator.check_token(user, token):
             user.is_active = True
             user.save()
             messages.success(request, 'Your account has been activated. You can now log in.')
+            return redirect('accounts:login')
         else:
             messages.error(request, 'Invalid activation link. Please contact support.')
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+    except (TypeError, ValueError, OverflowError, ApplicationUser.DoesNotExist):
         messages.error(request, 'Invalid activation link. Please contact support.')
+        return redirect('accounts:login')
 
     return redirect('accounts:login')
 
@@ -146,24 +134,17 @@ def activate_account(request, uidb64, token):
 @login_required
 def profile(request):
     user = request.user
-    profile, created = UserProfile.objects.get_or_create(user=user)  # Get or create user's profile
 
     if request.method == 'POST':
-        # Update the user's profile data based on the submitted form data
-        profile.full_name = request.POST.get('full_name', '')
-        profile.mobile_number = request.POST.get('mobile_number', '')
+        profile.first_name = request.POST.get('first_name')
+        profile.last_name = request.POST.get('last_name')
+        profile.mobile_number = request.POST.get('mobile_number')
         profile.location = request.POST.get('location', '')
-        # Handle photo upload if needed
         profile.photo = request.FILES.get('photo', profile.photo)
         profile.save()
-        # Redirect to the profile page with a success message
         messages.success(request, 'Profile updated successfully.')
         return redirect('accounts:profile')
 
-    context = {
-        'user': user,
-        'profile': profile,
-    }
     return render(request, 'profile/profile.html', context)
 
 
@@ -172,8 +153,8 @@ def custom_password_reset(request):
     if request.method == 'POST':
         email = request.POST.get("email")
         try:
-            user = User.objects.get(email=email)
-        except User.DoesNotExist:
+            user = ApplicationUser.objects.get(email=email)
+        except ApplicationUser.DoesNotExist:
             user = None
 
         if user:
@@ -191,7 +172,7 @@ def custom_password_reset(request):
                 'token': token,
             })
             email_message = EmailMessage(mail_subject, message, 'appsnasa57@gmail.com', [user.email])
-            email_message.content_subtype = 'html'  # Set the content type to HTML
+            email_message.content_subtype = 'html'
             email_message.send()
 
             return redirect('accounts:password_reset_done')
@@ -200,13 +181,12 @@ def custom_password_reset(request):
 
 
 
-
 # Custom password reset confirm view
 def custom_password_reset_confirm(request, uidb64, token):
     try:
         uid = uid = force_str(urlsafe_base64_decode(uidb64))
-        user = User.objects.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = ApplicationUser.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, ApplicationUser.DoesNotExist):
         user = None
 
     if user and default_token_generator.check_token(user, token):
@@ -233,6 +213,36 @@ def custom_password_reset_complete(request):
 # Password reset done view
 def custom_password_reset_done(request):
     return render(request, 'accounts/registration/custom_password_reset_done.html')
+
+
+
+# A view to chnage the password for the user
+@login_required
+@require_POST
+def password_change(request):
+    if request.method == 'POST':
+        old_password = request.POST.get('old_password')
+        new_password1 = request.POST.get('new_password')
+        new_password2 = request.POST.get('confirm_new_password')
+
+        # Check if the old password is correct
+        if request.user.check_password(old_password):
+            # Check if the new passwords match
+            if new_password1 == new_password2:
+                # Update the user's password
+                request.user.set_password(new_password1)
+                request.user.save()
+                messages.success(request, 'Your password has been changed successfully.')
+                return redirect('acccounts:account')
+            else:
+                messages.error(request, 'New passwords do not match.')
+                return redirect('activeuserapp:account')
+        else:
+            messages.error(request, 'The old password is incorrect.')
+            return redirect('activeuserapp:account')
+
+    return redirect('activeuserapp:account')
+
 
 
 def available_plans_view(request):

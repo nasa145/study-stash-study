@@ -1,0 +1,39 @@
+
+<body>
+    <h1>Available Tasks</h1>
+    <ul>
+        {% for task in available_tasks %}
+            <li>
+                <strong>Title:</strong> {{ task.title }}<br>
+                <strong>Description:</strong> {{ task.description }}<br>
+                <strong>Expiration Date:</strong> {{ task.expiration_date }}<br>
+                <strong>Task Completion Reward:</strong> ${{ task.task_completion_reward }}<br>
+                <a href="{% url 'activeuserapp:download_task' task.id %}" id="download-link">Download Task</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        var downloadLink = document.getElementById('download-link');
+
+        downloadLink.addEventListener('click', function(event) {
+            // Prevent the default link behavior to allow time for download
+            event.preventDefault();
+
+            // Trigger the download by clicking the hidden link
+            var hiddenLink = document.createElement('a');
+            hiddenLink.href = downloadLink.getAttribute('href');
+            hiddenLink.style.display = 'none';
+            document.body.appendChild(hiddenLink);
+            hiddenLink.click();
+            document.body.removeChild(hiddenLink);
+
+            // Access the custom response header and display a success message
+            var successMessage = xhr.getResponseHeader('X-Success-Message');
+            if (successMessage) {
+                alert(successMessage); // You can customize this to show a better UI message
+            }
+        });
+    </script>
+    
+</body>

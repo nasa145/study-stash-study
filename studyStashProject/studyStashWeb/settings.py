@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import braintree
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +27,7 @@ SECRET_KEY = '47!s+6d4+h!6!jo_smw&!a^@nk183#=fhlqg)=o9g2z66)!l7g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -35,6 +37,7 @@ INSTALLED_APPS = [
     'paymentapp',
     'studystashapp',
     'accounts',
+    'Admin.apps.AdminConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -135,5 +138,51 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'   # SMTP server hostname
 EMAIL_PORT = 587  # Port for SMTP (587 is common for TLS)
 EMAIL_USE_TLS = True  # Use TLS (True for secure email)
-EMAIL_HOST_USER = 'appsnasa57@gmail.com'  # Your email address
-EMAIL_HOST_PASSWORD = 'fcvx zczs dmsm doyz'  # Your email password
+EMAIL_HOST_USER = "nowwithtech@study-stash.com" # Your email address
+EMAIL_HOST_PASSWORD = "zdsc cquf huzz qrpf"
+# EMAIL_HOST_PASSWORD = 'fcvx zczs dmsm doyz'  # Your email password
+
+# Specifying that the ApplicationUser Model is  the oen that wil be used for authentication
+AUTH_USER_MODEL = 'accounts.ApplicationUser'
+
+
+
+# Static files (CSS, JavaScript, images)
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+# Configure the Braintree gateway
+BRAINTREE_MERCHANT_ID = '7psb8f9zq8tmyh7z'
+BRAINTREE_PUBLIC_KEY = 'grcxh37x397hxpr4'
+BRAINTREE_PRIVATE_KEY = 'c286171346fbd636f4314c4669557775'
+
+# Configure Braintree
+BRAINTREE_CONF = braintree.Configuration(
+ braintree.Environment.Sandbox,
+ BRAINTREE_MERCHANT_ID,
+ BRAINTREE_PUBLIC_KEY,
+ BRAINTREE_PRIVATE_KEY
+)
+
+
+# MEDIA FILES AND IMAGES CONFIGURATIONS
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+# CONFIGURATIONS TO USE BOOTSTRAP MESSAGES IN DJANGO
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
+
+
+
+

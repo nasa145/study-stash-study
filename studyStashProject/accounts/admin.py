@@ -1,18 +1,16 @@
 
-# admin.py
 
 from django.contrib import admin
-from .models import User, UserProfile
+from .models import ApplicationUser, UserProfile
 
 # Register the User model
-@admin.register(User)
+@admin.register(ApplicationUser)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('username', 'email', 'is_verified', 'plan', 'is_staff', 'is_superuser')
-    list_filter = ('is_verified', 'is_staff', 'is_superuser')
+    list_display = ('username', 'email', 'plan', 'is_staff', 'is_superuser')
     search_fields = ('username', 'email')
     fieldsets = (
         ('User Info', {
-            'fields': ('username', 'password', 'email', 'is_verified', 'card_details', 'plan')
+            'fields': ('username', 'password', 'email',  'plan')
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')
@@ -23,6 +21,6 @@ class UserAdmin(admin.ModelAdmin):
 # Register the UserProfile model
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'full_name', 'mobile_number', 'location')
-    search_fields = ('user__username', 'full_name', 'mobile_number', 'location')
+    list_display = ('user','first_name', 'last_name', 'mobile_number', 'location')
+    search_fields = ('user__username','first_name', 'last_name', 'mobile_number', 'location')
     list_filter = ('location',)

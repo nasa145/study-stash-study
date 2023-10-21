@@ -19,4 +19,7 @@ urlpatterns = [
     path('password_reset/done/', views.custom_password_reset_done, name='password_reset_done'),
     path('password_reset/confirm/<str:uidb64>/<str:token>/', views.custom_password_reset_confirm, name='password_reset_confirm'),
     path('password_reset/complete/', views.custom_password_reset_complete, name='password_reset_complete'),
+
+    # a password change that is custom
+    path('password_change/', views.password_change, name='password_change'),
 ]
